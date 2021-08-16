@@ -25,7 +25,7 @@ export class AlunoNovoComponent implements OnInit {
 
   salvar() {
     this.convertDate();
-    this.alunoService.createAluno(this.aluno)
+    this.alunoService.createEntidade(this.aluno)
     .subscribe(
       dado => {
         console.log(dado)

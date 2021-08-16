@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Aluno } from '../aluno.model';
 import { AlunoService } from '../aluno.service';
@@ -11,20 +13,25 @@ import { AlunoService } from '../aluno.service';
 export class AlunoEditarComponent implements OnInit {
 
   aluno: Aluno = new Aluno();
+  selected = new Date();
 
   constructor(private alunoService: AlunoService,
     private router: Router,
-    private rotaAtiva: ActivatedRoute) { }
+    private rotaAtiva: ActivatedRoute,
+    public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getAluno(this.rotaAtiva.snapshot.paramMap.get('id'));
   }
 
   getAluno(id) {
-    this.alunoService.getAluno(id)
+    this.alunoService.getEntidade(id)
       .subscribe(
         dado => {
           this.aluno = dado;
+
+          this.selected = new Date(this.aluno.dt_nasc);
+          this.converterStringToDate();
           console.log(dado);
         },
         error => {
@@ -33,8 +40,19 @@ export class AlunoEditarComponent implements OnInit {
       )
   }
 
+  private converterStringToDate() {
+    let s = this.aluno.dt_nasc;
+    let [dia, mes, ano] = s.split(/[\/: ]/).map(v => parseInt(v));
+    this.selected = new Date(ano, mes - 1, dia);
+  }
+  
+  private convertDate() {
+    this.aluno.dt_nasc = this.datepipe.transform(this.selected, 'dd/MM/yyyy');
+  }
+
   atualizar() {
-    this.alunoService.updateAluno(this.aluno.idaluno, this.aluno)
+    this.convertDate();
+    this.alunoService.updateEntidate(this.aluno.idaluno, this.aluno)
       .subscribe(
         dado => {
           this.alunoService.openSnackBar('Aluno atualizado !');
@@ -49,5 +67,4 @@ export class AlunoEditarComponent implements OnInit {
   cancelar() {
     this.router.navigate(['/alunos']);
   }
-
 }

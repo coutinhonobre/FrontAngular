@@ -2,5 +2,5 @@ export class Aluno {
     idaluno: number;
     nome: string;
     sexo: string;
-    dt_nasc: String;
+    dt_nasc: string;
 }

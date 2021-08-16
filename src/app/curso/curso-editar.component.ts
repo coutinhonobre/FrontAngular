@@ -22,7 +22,7 @@ export class CursoEditarComponent implements OnInit {
   }
 
   getCurso(id) {
-    this.cursoservice.getCurso(id)
+    this.cursoservice.getEntidade(id)
       .subscribe(
         dado => {
           this.curso = dado;
@@ -35,7 +35,7 @@ export class CursoEditarComponent implements OnInit {
   }
 
   atualizar() {
-    this.cursoservice.updateCurso(this.curso.idcurso, this.curso)
+    this.cursoservice.updateEntidate(this.curso.idcurso, this.curso)
       .subscribe(
         dado => {
           this.cursoservice.openSnackBar('Curso atualizado !');

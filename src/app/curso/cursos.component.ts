@@ -29,7 +29,7 @@ export class CursosComponent implements OnInit {
   }
 
   getCursoList() {
-    this.cursoService.getCursoList()
+    this.cursoService.getEntidadeList()
       .subscribe(
         dados => {
           this.cursoDataSource = new MatTableDataSource<Curso>(dados);
@@ -46,7 +46,7 @@ export class CursosComponent implements OnInit {
   }
 
   deletarCurso(delcurso : Curso){
-    this.cursoService.deleteCurso(delcurso.idcurso)
+    this.cursoService.deleteEntidade(delcurso.idcurso)
     .subscribe(
       dados => {
         this.cursoService.openSnackBar('Curso excluído !');

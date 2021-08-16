@@ -22,7 +22,7 @@ export class CursoNovoComponent implements OnInit {
   }
 
   salvar() {
-    this.cursoService.createCurso(this.curso)
+    this.cursoService.createEntidade(this.curso)
     .subscribe(
       dado => {
         console.log(dado)
@@ -33,7 +33,7 @@ export class CursoNovoComponent implements OnInit {
   }
 
   cancelar() {
-this.router.navigate(['/cursos']);
+    this.router.navigate(['/cursos']);
   }
 
 }

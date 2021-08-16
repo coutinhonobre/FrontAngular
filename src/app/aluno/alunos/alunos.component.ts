@@ -31,7 +31,7 @@ export class AlunosComponent implements OnInit {
   }
 
   getAlunoList() {
-    this.alunoService.getAlunoList()
+    this.alunoService.getEntidadeList()
       .subscribe(
         dados => {
           this.alunoDataSource = new MatTableDataSource<Aluno>(dados);
@@ -48,7 +48,7 @@ export class AlunosComponent implements OnInit {
   }
 
   deletarAluno(delaluno : Aluno){
-    this.alunoService.deleteAluno(delaluno.idaluno)
+    this.alunoService.deleteEntidade(delaluno.idaluno)
     .subscribe(
       dados => {
         this.alunoService.openSnackBar('Aluno excluído !');
