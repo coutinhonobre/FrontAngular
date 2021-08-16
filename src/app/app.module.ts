@@ -10,6 +10,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -60,6 +61,7 @@ import { AlunoNovoComponent } from './aluno/aluno-novo/aluno-novo.component';
     MatListModule,
     MatCardModule,
     MatButtonModule,
+    MatDatepickerModule,
     MatSnackBarModule,
     MatIconModule,
     MatTableModule,

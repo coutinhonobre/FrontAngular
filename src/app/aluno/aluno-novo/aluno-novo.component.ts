@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Aluno } from '../aluno.model';
+import { AlunoService } from '../aluno.service';
 
 @Component({
   selector: 'app-aluno-novo',
@@ -9,9 +10,11 @@ import { Aluno } from '../aluno.model';
 })
 export class AlunoNovoComponent implements OnInit {
 
-    aluno: Aluno = new Aluno()
+  aluno: Aluno = new Aluno()
+  startDate = new Date(2000, 0, 2);
 
   constructor(
+    private alunoService: AlunoService,
     private router: Router
   ) { }
 
@@ -19,11 +22,18 @@ export class AlunoNovoComponent implements OnInit {
   }
 
   salvar() {
-    
+    this.alunoService.createAluno(this.aluno)
+    .subscribe(
+      dado => {
+        console.log(dado)
+        this.alunoService.openSnackBar('Aluno criado com sucesso !');
+        this.router.navigate(['/alunos']);
+      }
+    )
   }
 
   cancelar() {
-
+    this.router.navigate(['/alunos']);
   }
 
 }

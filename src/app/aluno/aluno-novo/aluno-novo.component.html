@@ -4,12 +4,30 @@
     <mat-divider></mat-divider>
     <br>
     <div class="input1">
-    <mat-form-field appearance="outline">
-        <mat-label>Nome do Aluno</mat-label>
-        <input matInput placeholder="Digite o nome do curso" id="nomealuno"
-        required [(ngModel)]="aluno.nomealuno" name="nomealuno">
-        <mat-icon matSuffix>edit</mat-icon>
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nome do Aluno</mat-label>
+            <input matInput placeholder="Digite o nome do aluno" id="nomealuno"
+            required [(ngModel)]="aluno.nomealuno" name="nomealuno">
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="input1">
+        <mat-form-field appearance="outline">
+            <mat-label>Sexo</mat-label>
+            <select matNativeControl required id="nomealuno"
+            [(ngModel)]="aluno.sexo" name="sexo">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+            </select>
+        </mat-form-field>
+    </div>
+    <div class="input1">
+        <mat-form-field appearance="outline">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput placeholder="Digite a data de nascimento" id="datanascimento"
+            required [(ngModel)]="aluno.datanascimento" name="datanascimento">
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
     </div>
     <div class="button">
         <span class="bt" (click)="salvar()">
