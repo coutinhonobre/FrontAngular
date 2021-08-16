@@ -1,6 +1,6 @@
 export class Aluno {
     idaluno: number;
-    nomealuno: string;
+    nome: string;
     sexo: string;
-    datanascimento: String;
+    dt_nasc: String;
 }

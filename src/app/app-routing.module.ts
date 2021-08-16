@@ -7,6 +7,7 @@ import { CursosComponent } from './curso/cursos.component';
 import { CursoNovoComponent } from './curso/curso-novo.component';
 import { CursoEditarComponent } from './curso/curso-editar.component';
 import { AlunoNovoComponent } from './aluno/aluno-novo/aluno-novo.component';
+import { AlunosComponent } from './aluno/alunos/alunos.component';
 
 const routes: Routes = [
   { path: "",
@@ -26,9 +27,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: "alunos",
+    component: AlunosComponent
+  },
+  {
     path: "aluno-novo",
     component: AlunoNovoComponent
-  },
+  }
 ];
 
 @NgModule({
