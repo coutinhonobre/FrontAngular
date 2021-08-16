@@ -22,12 +22,15 @@
         </mat-form-field>
     </div>
     <div class="input3">
-        <mat-form-field appearance="outline">
+        <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Data de nascimento</mat-label>
-            <input matInput placeholder="Digite a data de nascimento" id="dt_nasc"
-             [(ngModel)]="aluno.dt_nasc" name="dt_nasc">
-            <mat-icon matSuffix>edit</mat-icon>
-        </mat-form-field>
+            <input matInput [matDatepicker]="picker" id="dt_nasc"
+            [(ngModel)]="aluno.dt_nasc" name="dt_nasc">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
     </div>
     <div class="button">
         <span class="bt" (click)="salvar()">

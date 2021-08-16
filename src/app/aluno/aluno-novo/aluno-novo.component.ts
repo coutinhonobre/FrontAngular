@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Aluno } from '../aluno.model';
@@ -15,13 +16,15 @@ export class AlunoNovoComponent implements OnInit {
 
   constructor(
     private alunoService: AlunoService,
-    private router: Router
+    private router: Router,
+    public datepipe: DatePipe
   ) { }
 
   ngOnInit(): void {
   }
 
   salvar() {
+    this.convertDate();
     this.alunoService.createAluno(this.aluno)
     .subscribe(
       dado => {
@@ -30,6 +33,10 @@ export class AlunoNovoComponent implements OnInit {
         this.router.navigate(['/alunos']);
       }
     )
+  }
+
+  private convertDate() {
+    this.aluno.dt_nasc = this.datepipe.transform(this.aluno.dt_nasc, 'dd/MM/yyyy');
   }
 
   cancelar() {
