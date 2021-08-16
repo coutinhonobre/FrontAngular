@@ -8,6 +8,7 @@ import { CursoNovoComponent } from './curso/curso-novo.component';
 import { CursoEditarComponent } from './curso/curso-editar.component';
 import { AlunoNovoComponent } from './aluno/aluno-novo/aluno-novo.component';
 import { AlunosComponent } from './aluno/alunos/alunos.component';
+import { AlunoEditarComponent } from './aluno/aluno-editar/aluno-editar.component';
 
 const routes: Routes = [
   { path: "",
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: "aluno-novo",
     component: AlunoNovoComponent
+  },
+  {
+    path: "aluno-editar/:id",
+    component: AlunoEditarComponent
   }
 ];
 

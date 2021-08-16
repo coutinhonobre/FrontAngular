@@ -1,17 +1,23 @@
 <div class="content">
     <mat-card-title>Alunos</mat-card-title>
-    <mat-card-subtitle><br>Cadastrar Aluno</mat-card-subtitle>
+    <mat-card-subtitle><br>Atualizar aluno</mat-card-subtitle>
     <mat-divider></mat-divider>
     <br>
     <div class="input1">
+    <mat-form-field appearance="outline">
+        <mat-label>Id.</mat-label>
+        <input matInput id="idaluno" disabled [(ngModel)]="aluno.idaluno" name="idaluno">
+      </mat-form-field>
+    </div>
+    <div class="input2">
         <mat-form-field appearance="outline">
-            <mat-label>Nome do Aluno</mat-label>
-            <input matInput placeholder="Digite o nome do aluno" id="nome"
-            required [(ngModel)]="aluno.nome" name="nome">
+            <mat-label>Nome do aluno</mat-label>
+            <input matInput id="nome" required [(ngModel)]="aluno.nome" 
+            name="nome">
             <mat-icon matSuffix>edit</mat-icon>
         </mat-form-field>
     </div>
-    <div class="input2">
+    <div class="input3">
         <mat-form-field appearance="outline">
             <mat-label>Sexo</mat-label>
             <select matNativeControl required id="nomealuno"
@@ -21,7 +27,7 @@
             </select>
         </mat-form-field>
     </div>
-    <div class="input3">
+    <div class="input4">
         <mat-form-field appearance="outline">
             <mat-label>Data de nascimento</mat-label>
             <input matInput placeholder="Digite a data de nascimento" id="dt_nasc"
@@ -30,8 +36,8 @@
         </mat-form-field>
     </div>
     <div class="button">
-        <span class="bt" (click)="salvar()">
-            <img class="img-btn" src="assets/img/check_box.png">Salvar
+        <span class="bt" (click)="atualizar()">
+            <img class="img-btn" src="assets/img/check_box.png">Atualizar
         </span>
         <span class="bt" (click)="cancelar()">
             <img class="img-btn" src="assets/img/cancel.png">Cancelar
