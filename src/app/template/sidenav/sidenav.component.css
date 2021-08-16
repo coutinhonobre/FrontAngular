@@ -1,0 +1,15 @@
+.sidenav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    width: 200px;
+    background-color:#262F36;
+    color: white;
+}
+
+.nav-list{
+    padding-left: 10px;
+    vertical-align: text-top;
+}

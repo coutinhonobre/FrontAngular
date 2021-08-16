@@ -1,0 +1,38 @@
+
+.content{
+ padding: 20px;
+}
+
+.mat-card-title {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.mat-card-subtitle{
+  font-size: 1em;
+  font-weight: 400;
+}
+
+button:nth-child(2) {
+  padding-left: 50px;
+}
+
+.mat-form-field{
+  position: absolute;
+  right: 20px;
+  min-width: 20%;
+  text-align: right;
+  background-color: transparent !important;
+}
+
+table {
+  min-width: 100%;
+  overflow-x: scroll;
+}
+
+th:nth-child(2) {
+  min-width: 75%;
+}
+th.mat-header-cell {
+  text-align: left;
+}

@@ -1,0 +1,12 @@
+.footer {
+    position: fixed;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    width: 100%;
+    background: #048C4E;
+    color: white;
+    font: 0.8em sans-serif;
+}

@@ -1,0 +1,22 @@
+<div class="content">
+    <mat-card-title>Cursos</mat-card-title>
+    <mat-card-subtitle><br>Cadastrar Curso</mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="input1">
+    <mat-form-field appearance="outline">
+        <mat-label>Nome do Curso</mat-label>
+        <input matInput placeholder="Digite o nome do curso" id="nomecurso"
+        required [(ngModel)]="curso.nomecurso" name="nomecurso">
+        <mat-icon matSuffix>edit</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="button">
+        <span class="bt" (click)="salvar()">
+            <img class="img-btn" src="assets/img/check_box.png">Salvar
+        </span>
+        <span class="bt" (click)="cancelar()">
+            <img class="img-btn" src="assets/img/cancel.png">Cancelar
+        </span>
+    </div>
+</div>
