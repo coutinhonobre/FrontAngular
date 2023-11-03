@@ -28,12 +28,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # FrontAngular
 
+Create Services
+
+ng generate s ./professores/professor
+
 ### Setup project
 
 * ```
   npm install
   ```
-
 * ```
   npm install -g @angular/cli@10.2.0
   ```
