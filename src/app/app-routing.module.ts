@@ -9,6 +9,7 @@ import { CursoEditarComponent } from './curso/curso-editar.component';
 import { AlunoNovoComponent } from './aluno/aluno-novo/aluno-novo.component';
 import { AlunosComponent } from './aluno/alunos/alunos.component';
 import { AlunoEditarComponent } from './aluno/aluno-editar/aluno-editar.component';
+import { ProfessoresComponent } from './professores/professores.component';
 
 const routes: Routes = [
   { path: "",
@@ -38,7 +39,11 @@ const routes: Routes = [
   {
     path: "aluno-editar/:id",
     component: AlunoEditarComponent
-  }
+  },
+  {
+    path: "professores",
+    component: ProfessoresComponent
+  },
 ];
 
 @NgModule({
