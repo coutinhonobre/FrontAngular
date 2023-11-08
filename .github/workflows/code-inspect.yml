@@ -24,7 +24,7 @@ jobs:
         run: npm i -g @angular-devkit/build-angular
           
       - name: Install dependencies
-        run: npm install
+        run: npm install --force
 
       - name: Run ng lint
         id: ng-lint
