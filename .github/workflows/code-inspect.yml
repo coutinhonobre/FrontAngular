@@ -14,7 +14,7 @@ jobs:
       - name: Set up Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
@@ -22,7 +22,7 @@ jobs:
 
       - name: Run ng lint
         id: ng-lint
-        run: npx ng lint
+        run: ng lint
 
       - name: Run npm audit
         id: npm-audit
