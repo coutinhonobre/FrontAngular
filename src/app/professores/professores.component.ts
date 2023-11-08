@@ -16,13 +16,14 @@ export class ProfessoresComponent implements OnInit {
   professor: Professor = new Professor();
 
   professorDataSource: MatTableDataSource<Professor>;
-  displayedProfessores: String[] = ['idProfessor', 'nome', 'titulacao', 'update', 'delete'];
-
+  
+  displayedProfessores: String[] = ['idProfessor', 'nomeProfessor','titulacao' ,'update', 'delete'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+ 
   constructor(
+    private router: Router,
     private professorService: ProfessorService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -63,5 +64,6 @@ export class ProfessoresComponent implements OnInit {
   navigateToProfessorEditar(professor: Professor) {
     this.router.navigate([`/professor-editar/${professor.idProfessor}`]);
   }
+  
 
 }

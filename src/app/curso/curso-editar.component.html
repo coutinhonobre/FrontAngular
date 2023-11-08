@@ -6,24 +6,24 @@
     <div class="input1">
     <mat-form-field appearance="outline">
         <mat-label>Id.</mat-label>
-        <input matInput id="idcurso" disabled [(ngModel)]="curso.idcurso" name="idcurso">
+        <input matInput id="idCurso" disabled [(ngModel)]="curso.idCurso" name="idCurso">
         <mat-icon matSuffix>edit</mat-icon>
       </mat-form-field>
     </div>
     <div class="input2">
         <mat-form-field appearance="outline">
             <mat-label>Nome do Curso</mat-label>
-            <input matInput id="nomecurso" required [(ngModel)]="curso.nomecurso" 
+            <input matInput id="nomecurso" required [(ngModel)]="curso.nomecurso"
             name="nomecurso">
             <mat-icon matSuffix>edit</mat-icon>
           </mat-form-field>
         </div>
     <div class="button">
         <span class="bt" (click)="atualizar()">
-            <img class="img-btn" src="assets/img/check_box.png">Atualizar
+            <img alt="check" class="img-btn" src="assets/img/check_box.png">Atualizar
         </span>
         <span class="bt" (click)="cancelar()">
-            <img class="img-btn" src="assets/img/cancel.png">Cancelar
+            <img alt="check" class="img-btn" src="assets/img/cancel.png">Cancelar
         </span>
     </div>
 </div>
