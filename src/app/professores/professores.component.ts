@@ -16,6 +16,7 @@ export class ProfessoresComponent implements OnInit {
   professor: Professor = new Professor();
 
   professorDataSource: MatTableDataSource<Professor>;
+  
   displayedProfessores: String[] = ['idProfessor', 'nomeProfessor','titulacao' ,'update', 'delete'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -23,48 +24,45 @@ export class ProfessoresComponent implements OnInit {
   constructor(
     private router: Router,
     private professorService: ProfessorService,
-
   ) { }
 
   ngOnInit(): void {
     this.getProfessorList();
   }
 
-  navigateToProfessorNovo() {
-    this.router.navigate(['/professores-novo']);
-  }
-  
   getProfessorList() {
     this.professorService.getEntidadeList()
-      .subscribe(
-        dados => {
-          console.log(dados)
-          this.professorDataSource = new MatTableDataSource<Professor>(dados);
-          this.professorDataSource.paginator = this.paginator;
-          this.professorDataSource.sort = this.sort;
-        },
-        error => console.log(error)
-      );
+    .subscribe(
+      dados => {
+        this.professorDataSource = new MatTableDataSource<Professor>(dados);
+        this.professorDataSource.paginator = this.paginator;
+        this.professorDataSource.sort = this.sort;
+      },
+      error => console.log(error)
+    );
   }
 
-  filtrarProfessores(event: Event) {
+  navigateToProfessorNovo() {
+    this.router.navigate(['/professor-novo']);
   }
 
-  navigateToProfessorEditar(professor: Professor) {
-    console.log(professor)
-
-    this.router.navigate([`/professor-editar/${professor.idProfessor}`]);
-
-  }
-
-  deletarProfessor(professor : Professor){
-    this.professorService.deleteEntidade(professor.idProfessor)
+  deletarProfessor(delProfessor : Professor){
+    this.professorService.deleteEntidade(delProfessor.idProfessor)
     .subscribe(
       dados => {
         this.professorService.openSnackBar('Professor excluído !');
         this.getProfessorList();
       }
     )
+  }
+
+  filtrarProfessores(event: Event) {
+    let valor = (event.target as HTMLInputElement).value;
+    this.professorDataSource.filter = valor;
+  }
+
+  navigateToProfessorEditar(professor: Professor) {
+    this.router.navigate([`/professor-editar/${professor.idProfessor}`]);
   }
   
 

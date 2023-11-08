@@ -32,6 +32,9 @@ Create Services
 
 ng generate s ./professores/professor
 
+Create Components
+ng g c professores
+
 ### Setup project
 
 * ```
