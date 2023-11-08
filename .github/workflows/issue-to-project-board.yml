@@ -1,0 +1,17 @@
+name: Adicionar Issue ao Quadro de Projeto
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-to-project-board:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Adicionar uma issue ao quadro de projetos
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project: "Projeto de Testes de Software - 2023"
+          column: "Issues"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
