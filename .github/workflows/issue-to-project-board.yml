@@ -2,8 +2,7 @@ name: Adicionar Issue ao Quadro de Projeto
 
 on:
   issues:
-    types:
-      - opened
+    types: [opened, edited, reopened, milestoned]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
