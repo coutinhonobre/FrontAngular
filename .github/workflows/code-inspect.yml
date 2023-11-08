@@ -7,6 +7,10 @@ on:
       - synchronize
       - reopened
       - edited
+    branches:
+      - develop
+      - main
+      - master  
 
 jobs:
   code-quality:
