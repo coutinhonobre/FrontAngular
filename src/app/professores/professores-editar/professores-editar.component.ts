@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Professor } from '../professor.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfessorService } from '../professor.service';
 
 @Component({
@@ -14,17 +14,21 @@ export class ProfessoresEditarComponent implements OnInit {
 
   constructor(
     private professorService: ProfessorService,
+    private rotaAtiva: ActivatedRoute,
     private router: Router,
   ) { }
   ngOnInit(): void {
+    console.log(this.rotaAtiva.snapshot.paramMap.get('id'))
+    this.getProfessor(this.rotaAtiva.snapshot.paramMap.get('id'));
   }
 
   salvar() {
+    console.log(this.professor)
     this.professorService.updateEntidate(this.professor.idProfessor,this.professor)
     .subscribe(
       dado => {
         console.log(dado)
-        this.professorService.openSnackBar('Professor criado com sucesso !');
+        this.professorService.openSnackBar('Professor editado com sucesso !');
         this.router.navigate(['/professores']);
       }
     )
@@ -32,8 +36,20 @@ export class ProfessoresEditarComponent implements OnInit {
   cancelar() {
     this.router.navigate(['/professores']);
   }
+
+  getProfessor(id){
+    console.log(id)
+    this.professorService.getEntidade(id)
+    .subscribe(
+      dado => {
+        this.professor = dado;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
   navigateToAlunoEditar(professor: Professor) {
-    console.log(professor)
     this.router.navigate([`/professor-editar/${professor.idProfessor}`]);
   }
 

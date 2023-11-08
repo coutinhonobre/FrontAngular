@@ -43,7 +43,7 @@ export class ProfessoresComponent implements OnInit {
   }
 
   navigateToProfessorNovo() {
-    this.router.navigate(['/professor-novo']);
+    this.router.navigate(['/professores-novo']);
   }
 
   deletarProfessor(delProfessor : Professor){
