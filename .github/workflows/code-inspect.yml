@@ -28,7 +28,7 @@ jobs:
 
       - name: Run ng lint
         id: ng-lint
-        run: npx ng lint
+        run: npm run lint
 
       - name: Run npm audit
         id: npm-audit
