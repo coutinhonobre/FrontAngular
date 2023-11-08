@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfessorService } from '../professor.service';
+import { Router } from '@angular/router';
+import { Professor } from '../professor.model';
 
 @Component({
   selector: 'app-professores-novo',
@@ -6,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./professores-novo.component.css']
 })
 export class ProfessoresNovoComponent implements OnInit {
+  professor: Professor = new Professor()
 
-  constructor() { }
-
+  constructor(
+    private professorService: ProfessorService,
+    private router: Router,
+  ) { }
   ngOnInit(): void {
+  }
+
+  salvar() {
+    this.professorService.createEntidade(this.professor)
+    .subscribe(
+      dado => {
+        console.log(dado)
+        this.professorService.openSnackBar('Professor criado com sucesso !');
+        this.router.navigate(['/professores']);
+      }
+    )
+  }
+  cancelar() {
+    this.router.navigate(['/professores']);
   }
 
 }

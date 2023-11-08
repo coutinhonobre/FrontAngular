@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Professor } from '../professor.model';
+import { Router } from '@angular/router';
+import { ProfessorService } from '../professor.service';
 
 @Component({
   selector: 'app-professores-editar',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfessoresEditarComponent implements OnInit {
 
-  constructor() { }
+  professor: Professor = new Professor()
 
+  constructor(
+    private professorService: ProfessorService,
+    private router: Router,
+  ) { }
   ngOnInit(): void {
+  }
+
+  salvar() {
+    this.professorService.updateEntidate(this.professor.idProfessor,this.professor)
+    .subscribe(
+      dado => {
+        console.log(dado)
+        this.professorService.openSnackBar('Professor criado com sucesso !');
+        this.router.navigate(['/professores']);
+      }
+    )
+  }
+  cancelar() {
+    this.router.navigate(['/professores']);
+  }
+  navigateToAlunoEditar(professor: Professor) {
+    console.log(professor)
+    this.router.navigate([`/professor-editar/${professor.idProfessor}`]);
   }
 
 }
