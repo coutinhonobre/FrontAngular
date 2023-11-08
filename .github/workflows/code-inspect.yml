@@ -2,6 +2,15 @@ name: Code Inspection
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
+    branches:
+      - develop
+      - main
+      - master  
 
 jobs:
   code-quality:
@@ -14,15 +23,21 @@ jobs:
       - name: Set up Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: '9.6.4'
+          node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@10.2.0
+
+      - name: Install devkit
+        run: npm i -g @angular-devkit/build-angular
+          
+      - name: Install CI
+        run: npm install --force
 
       - name: Run ng lint
         id: ng-lint
-        run: ng lint
+        run: npm run lint
 
       - name: Run npm audit
         id: npm-audit
