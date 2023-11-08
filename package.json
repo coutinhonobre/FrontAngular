@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint './src/**/*.ts' --fix",
     "e2e": "ng e2e",
     "audit": "npm audit",
     "postinstall": "npm run audit"

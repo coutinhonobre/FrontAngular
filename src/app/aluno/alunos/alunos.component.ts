@@ -16,7 +16,7 @@ export class AlunosComponent implements OnInit {
   aluno: Aluno = new Aluno();
 
   alunoDataSource: MatTableDataSource<Aluno>;
-  displayedAlunos: String[] = ['idaluno', 'nome', 'sexo', 'dt_nasc', 'update', 'delete'];
+  displayedAlunos: string[] = ['idaluno', 'nome', 'sexo', 'dt_nasc', 'update', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,7 +43,7 @@ export class AlunosComponent implements OnInit {
   }
 
   filtrarAlunos(event: Event) {
-    let valor = (event.target as HTMLInputElement).value;
+    const valor = (event.target as HTMLInputElement).value;
     this.alunoDataSource.filter = valor;
   }
 

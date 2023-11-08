@@ -23,8 +23,8 @@ jobs:
       - name: Install devkit
         run: npm i -g @angular-devkit/build-angular
           
-      - name: Install dependencies
-        run: npm install --force
+      - name: Install CI
+        run: npm ci
 
       - name: Run ng lint
         id: ng-lint

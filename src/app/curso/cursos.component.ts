@@ -16,7 +16,7 @@ export class CursosComponent implements OnInit {
   curso: Curso = new Curso();
 
   cursoDataSource: MatTableDataSource<Curso>;
-  displayedCursos: String[] = ['idcurso', 'nomecurso', 'update', 'delete'];
+  displayedCursos: string[] = ['idcurso', 'nomecurso', 'update', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -41,7 +41,7 @@ export class CursosComponent implements OnInit {
   }
 
   filtrarCursos(event: Event) {
-    let valor = (event.target as HTMLInputElement).value;
+    const valor = (event.target as HTMLInputElement).value;
     this.cursoDataSource.filter = valor;
   }
 

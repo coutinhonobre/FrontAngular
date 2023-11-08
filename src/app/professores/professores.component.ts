@@ -16,7 +16,7 @@ export class ProfessoresComponent implements OnInit {
   professor: Professor = new Professor();
 
   professorDataSource: MatTableDataSource<Professor>;
-  displayedProfessores: String[] = ['idProfessor', 'nome', 'titulacao', 'update', 'delete'];
+  displayedProfessores: string[] = ['idProfessor', 'nome', 'titulacao', 'update', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -56,7 +56,7 @@ export class ProfessoresComponent implements OnInit {
   }
 
   filtrarProfessores(event: Event) {
-    let valor = (event.target as HTMLInputElement).value;
+    const valor = (event.target as HTMLInputElement).value;
     this.professorDataSource.filter = valor;
   }
 
