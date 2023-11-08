@@ -4,27 +4,83 @@ on:
   pull_request:
 
 jobs:
-  lint-and-audit:
+  code-quality:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@10.2.0
 
-    - name: Run Lint
-      run: npm run lint
+      - name: Install devkit
+        run: npm i -g @angular-devkit/build-angular
+          
+      - name: Install dependencies
+        run: npm install
 
-    - name: Audit Dependencies
-      run: npm run audit
+      - name: Run ng lint
+        id: ng-lint
+        run: npm run lint
+
+      - name: Run npm audit
+        id: npm-audit
+        run: npm audit --audit-level=high
+        continue-on-error: true 
+
+      - name: Determine ng lint outcome
+        run: echo "NG_LINT_RESULT=${{ steps.ng-lint.outcome }}" >> $GITHUB_ENV
+        if: always()
+
+      - name: Determine npm audit outcome
+        run: echo "NPM_AUDIT_RESULT=${{ steps.npm-audit.outcome }}" >> $GITHUB_ENV
+        if: always()
+
+      - name: Create Issue on Failure
+        if: ${{ failure() }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.number;
+            const prLink = context.payload.pull_request.html_url;
+            const prefixTitle = 'Falha na Inspeção do Código: ';
+            const titlePR = context.payload.pull_request.title;
+            const title = `${prefixTitle}${titlePR} (PR #${prNumber})`;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+            });
+            const isIssueExist = issues.find(issue => issue.title === title);
+            if (!isIssueExist) {
+              const bodyIssue = `
+              Foi encontrada uma falha durante a inspeção de código no Pull Request atual. Seguem detalhes:
+
+              <ul>
+                <li>ng lint: ${process.env.NG_LINT_RESULT}</li>
+                <li>npm audit: ${process.env.NPM_AUDIT_RESULT}</li>
+              </ul>
+
+              Para mais informações, veja o [Pull Request #${prNumber}](${prLink}).
+
+              `;
+              const responseCreateIssue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: bodyIssue.trim()
+              });
+              if (responseCreateIssue.status !== 201) {
+                core.setFailed("Falha ao criar issue para falha na inspeção do código.");
+              }
+            } else {
+              console.log("Uma issue aberta com a falha na inspeção do código já existe.");
+            }
