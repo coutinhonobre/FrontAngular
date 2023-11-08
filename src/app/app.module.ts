@@ -41,6 +41,7 @@ import { AlunosComponent } from './aluno/alunos/alunos.component';
 import { AlunoEditarComponent } from './aluno/aluno-editar/aluno-editar.component';
 import { ProfessoresComponent } from './professores/professores.component';
 import { ProfessoresNovoComponent } from './professores/professores-novo/professores-novo.component';
+import { ProfessoresEditarComponent } from './professores/professores-editar/professores-editar.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ProfessoresNovoComponent } from './professores/professores-novo/profess
     AlunosComponent,
     AlunoEditarComponent,
     ProfessoresComponent,
-    ProfessoresNovoComponent
+    ProfessoresNovoComponent,
+    ProfessoresEditarComponent
   ],
   imports: [
     BrowserModule,
