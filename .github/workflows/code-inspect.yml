@@ -33,7 +33,7 @@ jobs:
         run: npm i -g @angular-devkit/build-angular
           
       - name: Install CI
-        run: npm ci
+        run: npm install --force
 
       - name: Run ng lint
         id: ng-lint
