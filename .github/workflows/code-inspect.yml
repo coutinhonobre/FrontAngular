@@ -20,7 +20,7 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli@10.2.0
 
-      - name: Install dependencies
+      - name: Install devkit
         run: npm i  -g @angular-devkit/build-angular
           
       - name: Install dependencies
