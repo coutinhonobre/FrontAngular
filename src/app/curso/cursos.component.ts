@@ -16,7 +16,7 @@ export class CursosComponent implements OnInit {
   curso: Curso = new Curso();
 
   cursoDataSource: MatTableDataSource<Curso>;
-  displayedCursos: String[] = ['idcurso', 'nomecurso', 'update', 'delete'];
+  displayedCursos: String[] = ['idCurso', 'nomecurso', 'update', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -32,6 +32,7 @@ export class CursosComponent implements OnInit {
     this.cursoService.getEntidadeList()
       .subscribe(
         dados => {
+          console.log(dados);
           this.cursoDataSource = new MatTableDataSource<Curso>(dados);
           this.cursoDataSource.paginator = this.paginator;
           this.cursoDataSource.sort = this.sort;
@@ -46,7 +47,7 @@ export class CursosComponent implements OnInit {
   }
 
   deletarCurso(delcurso : Curso){
-    this.cursoService.deleteEntidade(delcurso.idcurso)
+    this.cursoService.deleteEntidade(delcurso.idCurso)
     .subscribe(
       dados => {
         this.cursoService.openSnackBar('Curso excluído !');
@@ -60,7 +61,7 @@ export class CursosComponent implements OnInit {
   }
 
   navigateToCursoEditar(curso: Curso) {
-    this.router.navigate([`/curso-editar/${curso.idcurso}`]);
+    this.router.navigate([`/curso-editar/${curso.idCurso}`]);
   }
 
 }

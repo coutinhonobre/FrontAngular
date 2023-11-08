@@ -28,7 +28,6 @@ export class AlunoNovoComponent implements OnInit {
     this.alunoService.createEntidade(this.aluno)
     .subscribe(
       dado => {
-        console.log(dado)
         this.alunoService.openSnackBar('Aluno criado com sucesso !');
         this.router.navigate(['/alunos']);
       }

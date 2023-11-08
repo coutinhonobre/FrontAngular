@@ -35,7 +35,8 @@ export class CursoEditarComponent implements OnInit {
   }
 
   atualizar() {
-    this.cursoservice.updateEntidate(this.curso.idcurso, this.curso)
+    console.log(this.curso)
+    this.cursoservice.updateEntidate(this.curso.idCurso, this.curso)
       .subscribe(
         dado => {
           this.cursoservice.openSnackBar('Curso atualizado !');

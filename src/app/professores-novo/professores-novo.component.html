@@ -1,0 +1,30 @@
+<div class="content">
+    <mat-card-title>Professor</mat-card-title>
+    <mat-card-subtitle><br>Cadastrar Professor</mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="input1">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome do Professor</mat-label>
+            <input matInput placeholder="Digite o nome do aluno" id="nome"
+            required [(ngModel)]="professor.nome"  name="nome">
+        </mat-form-field>
+    </div>
+    <div class="input1">
+        <mat-form-field appearance="outline">
+            <mat-label>Titulação</mat-label>
+            <input matInput placeholder="Digite a Titulação do Professor" id="titulacao"
+            required [(ngModel)]="professor.titulacao"  name="titulacao">
+        </mat-form-field>
+    </div>
+
+
+    <div class="button">
+        <span class="bt" (click)="salvar()">
+            <img alt="check" class="img-btn" src="assets/img/check_box.png">Salvar
+        </span>
+        <span class="bt" (click)="cancelar()">
+            <img alt="cancel" class="img-btn" src="assets/img/cancel.png">Cancelar
+        </span>
+    </div>
+</div>
