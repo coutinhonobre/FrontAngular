@@ -2,12 +2,18 @@ name: Adicionar Issue ao Quadro de Projeto
 
 on:
   issues:
-    types: [opened, edited, reopened, milestoned]
+    types: [opened, labeled]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
+  check_run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Action Run
+        run: echo "The action was triggered successfully!"
+
   assign_to_project:
     runs-on: ubuntu-latest
     name: Assign to Project 4 Issues Column
