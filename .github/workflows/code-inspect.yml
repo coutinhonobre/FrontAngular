@@ -26,8 +26,8 @@ jobs:
 
       - name: Run npm audit
         id: npm-audit
-        run: npm audit --audit-level=high # Muda para o nível desejado
-        continue-on-error: true # Isso permite que o passo seguinte seja executado mesmo que este falhe.
+        run: npm audit --audit-level=high
+        continue-on-error: true 
 
       - name: Determine ng lint outcome
         run: echo "NG_LINT_RESULT=${{ steps.ng-lint.outcome }}" >> $GITHUB_ENV
