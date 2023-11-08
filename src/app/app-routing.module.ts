@@ -10,6 +10,8 @@ import { AlunoNovoComponent } from './aluno/aluno-novo/aluno-novo.component';
 import { AlunosComponent } from './aluno/alunos/alunos.component';
 import { AlunoEditarComponent } from './aluno/aluno-editar/aluno-editar.component';
 import { ProfessoresComponent } from './professores/professores.component';
+import { ProfessoresNovoComponent } from './professores-novo/professores-novo.component';
+import { ProfessoresEditarComponent } from './professores-editar/professores-editar.component';
 
 const routes: Routes = [
   { path: "",
@@ -43,6 +45,14 @@ const routes: Routes = [
   {
     path: "professores",
     component: ProfessoresComponent
+  },
+  {
+    path: "professores-novo",
+    component: ProfessoresNovoComponent
+  },
+  {
+    path: "professor-editar/:id",
+    component: ProfessoresEditarComponent
   },
 ];
 

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export abstract class BackendApiService {
 
   // api RestFul JAVA
-  baseUrl = 'http://localhost:8080/sistema-academico/'; 
+  baseUrl = 'http://localhost:8090/sistema-academico/'; 
 
   constructor(private _snackBar: MatSnackBar, 
     private httpClient: HttpClient) { }

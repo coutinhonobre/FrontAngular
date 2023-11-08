@@ -52,6 +52,7 @@ export class AlunoEditarComponent implements OnInit {
 
   atualizar() {
     this.convertDate();
+    
     this.alunoService.updateEntidate(this.aluno.idaluno, this.aluno)
       .subscribe(
         dado => {
