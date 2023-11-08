@@ -2,6 +2,11 @@ name: Code Inspection
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
 
 jobs:
   code-quality:
