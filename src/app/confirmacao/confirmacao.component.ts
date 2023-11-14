@@ -9,5 +9,4 @@ export class ConfirmacaoComponent {
 
   message: string;
 
-  constructor() { }
 }
