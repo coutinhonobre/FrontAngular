@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Aluno } from '../aluno.model';
 import { AlunoService } from '../aluno.service';
@@ -9,7 +9,7 @@ import { AlunoService } from '../aluno.service';
   templateUrl: './aluno-novo.component.html',
   styleUrls: ['./aluno-novo.component.css']
 })
-export class AlunoNovoComponent implements OnInit {
+export class AlunoNovoComponent {
 
   aluno: Aluno = new Aluno()
   startDate = new Date(2000, 0, 2);
@@ -19,9 +19,6 @@ export class AlunoNovoComponent implements OnInit {
     private router: Router,
     public datepipe: DatePipe
   ) { }
-
-  ngOnInit(): void {
-  }
 
   salvar() {
     this.convertDate();

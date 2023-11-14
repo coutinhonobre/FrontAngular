@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfessorService } from '../professor.service';
 import { Router } from '@angular/router';
 import { Professor } from '../professor.model';
@@ -8,15 +8,13 @@ import { Professor } from '../professor.model';
   templateUrl: './professores-novo.component.html',
   styleUrls: ['./professores-novo.component.css']
 })
-export class ProfessoresNovoComponent implements OnInit {
+export class ProfessoresNovoComponent {
   professor: Professor = new Professor()
 
   constructor(
     private professorService: ProfessorService,
     private router: Router,
   ) { }
-  ngOnInit(): void {
-  }
 
   salvar() {
     this.professorService.createEntidade(this.professor)
