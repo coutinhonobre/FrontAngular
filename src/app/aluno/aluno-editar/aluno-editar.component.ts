@@ -41,7 +41,7 @@ export class AlunoEditarComponent implements OnInit {
 
   private converterStringToDate() {
     let s = this.aluno.dt_nasc;
-    let [dia, mes, ano] = s.split(/[\/: ]/).map(v => parseInt(v));
+    let [dia, mes, ano] = s.split(/[/: ]/).map(v => parseInt(v));
     this.selected = new Date(ano, mes - 1, dia);
   }
 
