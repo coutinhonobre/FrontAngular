@@ -37,7 +37,7 @@ export abstract class BackendApiService {
       return this.httpClient.get(`${this.getUrl()}`);
     }
 
-    protected abstract endPoint():String;
+    protected abstract endPoint():string;
 
     getUrl(): string {
       return `${this.baseUrl}${this.endPoint()}`;

@@ -5,7 +5,7 @@ import { BackendApiService } from '../backend-api.service';
   providedIn: 'root'
 })
 export class AlunoService extends BackendApiService {
-  protected endPoint(): String {
+  protected endPoint(): string {
     return "alunos";
   }
 }

@@ -16,7 +16,7 @@ export class CursosComponent implements OnInit {
   curso: Curso = new Curso();
 
   cursoDataSource: MatTableDataSource<Curso>;
-  displayedCursos: String[] = ['idCurso', 'nomecurso', 'update', 'delete'];
+  displayedCursos: string[] = ['idCurso', 'nomecurso', 'update', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -55,7 +55,7 @@ export class CursosComponent implements OnInit {
       }
     )
   }
-  
+
   navigateToCursoNovo() {
     this.router.navigate(['/curso-novo']);
   }

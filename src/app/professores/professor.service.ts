@@ -8,7 +8,7 @@ import { BackendApiService } from '../backend-api.service';
   providedIn: 'root'
 })
 export class ProfessorService extends BackendApiService {
-  protected endPoint(): String {
+  protected endPoint(): string {
     return "professores";
   }
 }
